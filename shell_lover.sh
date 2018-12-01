@@ -56,16 +56,16 @@ function reverse_shell_list(){
 	"""
 	while true;do
         prompt
-	    read shell_type
+	read shell_type
 
 	    case $shell_type in
 		1) bash_shell;;
-		2) perl_shell;;
-		3) python_shell;;
-	  	4) php_shell;;
-		5) ruby_shell;;
-		6) netcat_shell;;
-		7) java_shell;;
+		2) ruby_shell;;
+		3) perl_shell;;
+		4) netcat_shell;;
+		5) python_shell;;
+	  	6) java_shell;;
+		7) php_shell;;
 	    	8) shellshock;;
 	    	9) lua_shell;;
 		10) powershell;;
