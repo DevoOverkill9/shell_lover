@@ -43,13 +43,13 @@ function prompt(){
 function reverse_shell_list(){
 
 	echo -e """
-[${Blue}1${Color_Off}]Bash		 [${IRed}5${Color_Off}]Ruby
+[${Blue}1${Color_Off}]Bash		 [${IRed}2${Color_Off}]Ruby
 
-[${Green}2${Color_Off}]Perl		 [${Cyan}6${Color_Off}]Netcat
+[${Green}3${Color_Off}]Perl		 [${Cyan}4${Color_Off}]Netcat
 
-[${Yellow}3${Color_Off}]Python	 [${IYellow}7${Color_Off}]Java
+[${Yellow}5${Color_Off}]Python	 [${IYellow}6${Color_Off}]Java
 
-[${Purple}4${Color_Off}]PHP		 [${IBlue}8${Color_Off}]Shellshock
+[${Purple}7${Color_Off}]PHP		 [${IBlue}8${Color_Off}]Shellshock
 
 [${Cyan}9${Color_Off}]Lua           [${Blue}10${Color_Off}]Powershell
 
