@@ -30,14 +30,15 @@ function ascii_art(){
 ${Red}╔═╗${Green}┬ ┬┌─┐┬  ┬    ${Red}╦  ┌─┐┬  ┬┌─┐┬─┐
 ${Red}╚═╗${Green}├─┤├┤ │  │    ${Red}║  │ │└┐┌┘├┤ ├┬┘
 ${Red}╚═╝${Green}┴ ┴└─┘┴─┘┴─┘  ${Red}╩═╝└─┘ └┘ └─┘┴└─   
-${IWhite}Author : Captain_M!dnight	
+${IWhite}Original Author : Captain_M!dnight	
 [${Red}NOTICE${Color_Off}]Texts in red are changable
 ${Color_Off}"""
+	
 }
 
 function prompt(){
 
-	printf "${Red}♥${IGreen}Shells${Red}♥${IGreen}:${Color_Off} "
+	printf "${IGreen}Shells${IGreen}:${Color_Off} "
 }
 
 function reverse_shell_list(){
@@ -56,6 +57,8 @@ function reverse_shell_list(){
 [${Green}11${Color_Off}]Telnet       [${Yellow}12${Color_Off}]Open_ssl
 
 	"""
+	echo -e "${Green}Hint${Color_Off} Find out what programs are installed with:"
+	echo -e 'for item in $(echo "nmap nc perl python ruby gcc wget sudo curl"); do which $item; done\n'
     while true;do
         prompt
 	read shell_type
@@ -76,6 +79,7 @@ function reverse_shell_list(){
 	   "exit"|"q"|"quit") exit 0;;
 	   *)echo -e "[-]Enter the shell number";reverse_shell_list;;
 	esac
+
     done
 }
 
